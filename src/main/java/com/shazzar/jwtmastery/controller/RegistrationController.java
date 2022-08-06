@@ -3,7 +3,7 @@ package com.shazzar.jwtmastery.controller;
 import com.shazzar.jwtmastery.config.userdetailconfig.AppUserService;
 import com.shazzar.jwtmastery.model.request.JwtRequest;
 import com.shazzar.jwtmastery.model.request.UserRequest;
-import com.shazzar.jwtmastery.model.response.UserResponse;
+import com.shazzar.jwtmastery.model.response.UserRegistrationResponse;
 import com.shazzar.jwtmastery.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,20 +23,20 @@ public class RegistrationController {
 
 
     @PostMapping("/officialSignup")
-    public ResponseEntity<UserResponse> officialSignup(@RequestBody UserRequest request) {
-        UserResponse response = userService.officialSignup(request);
+    public ResponseEntity<UserRegistrationResponse> officialSignup(@RequestBody UserRequest request) {
+        UserRegistrationResponse response = userService.officialSignup(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/casualSignup")
-    public ResponseEntity<UserResponse> casualSignup(@RequestBody UserRequest request) {
-        UserResponse response = userService.casualSignup(request);
+    public ResponseEntity<UserRegistrationResponse> casualSignup(@RequestBody UserRequest request) {
+        UserRegistrationResponse response = userService.casualSignup(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<UserResponse> signInAuthentication(@RequestBody JwtRequest request) throws Exception {
-        UserResponse response = appUserService.signInAuthentication(request);
+    public ResponseEntity<UserRegistrationResponse> signInAuthentication(@RequestBody JwtRequest request) throws Exception {
+        UserRegistrationResponse response = appUserService.signInAuthentication(request);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

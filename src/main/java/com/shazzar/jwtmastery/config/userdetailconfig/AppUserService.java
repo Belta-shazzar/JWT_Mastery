@@ -3,14 +3,9 @@ package com.shazzar.jwtmastery.config.userdetailconfig;
 import com.shazzar.jwtmastery.entity.User;
 import com.shazzar.jwtmastery.model.Mapper;
 import com.shazzar.jwtmastery.model.request.JwtRequest;
-import com.shazzar.jwtmastery.model.response.UserResponse;
+import com.shazzar.jwtmastery.model.response.UserRegistrationResponse;
 import com.shazzar.jwtmastery.repo.UserRepo;
 import com.shazzar.jwtmastery.util.JwtUtil;
-import lombok.SneakyThrows;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,7 +30,7 @@ public class AppUserService implements UserDetailsService {
         return new AppUser(user);
     }
 
-    public UserResponse signInAuthentication(JwtRequest request) {
+    public UserRegistrationResponse signInAuthentication(JwtRequest request) {
         String username = request.getUsername();
         String password = request.getPassword();
         jwtUtil.authenticate(username, password);
